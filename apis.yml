@@ -1,8 +1,16 @@
 aid: jimmy
 name: Jimmy
-description: 'Jimmy is a company surfaced as a portfolio company of serena and added to the API Evangelist
-  network as a stub for enrichment. Sector: climate-tech. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Jimmy (Jimmy Energy SAS) is a French nuclear-technology company, founded in 2020 as a spin-off from
+  the CEA, that designs, builds and operates small modular high-temperature reactors it calls thermal
+  generators — helium-cooled HTR units the company describes as bus-sized — to deliver carbon-free
+  process heat directly to industrial sites under secured 20-year supply-and-price contracts. Jimmy is
+  headquartered in Paris with an industrial platform at Le Creusot in Burgundy, targets food, paper,
+  sugar and chemicals producers that currently burn natural gas for process heat, and filed the first
+  SMR creation-authorization request in France for a generator at the Cristanol site in Bazancourt.
+  Jimmy sells heat, not software: it publishes no API, developer portal, SDK or machine-readable
+  specification, and this profile records that measured absence rather than assuming it.
+image: https://cdn.prod.website-files.com/63497bb96fe7a9a8fa88990d/6352bfaf482c556de506e26e_Jimmy-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/jimmy/refs/heads/main/apis.yml
 x-type: company
 x-source: serena-portfolio
@@ -14,12 +22,61 @@ modified: '2026-08-17'
 tags:
 - Company
 - Climate Tech
+- Energy
+- Nuclear
+- Small Modular Reactor
+- Industrial Heat
+- Decarbonization
+- Deep Tech
+- Manufacturing
+- France
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-08-17'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    Jimmy manufactures and operates nuclear high-temperature thermal generators and sells industrial
+    heat on 20-year contracts, so there is nothing to expose as an API — api., docs. and
+    developer.jimmy-energy.eu do not resolve in DNS and the Webflow marketing site 404s on every spec
+    and /.well-known/ path probed.
+  evidence:
+  - url: https://www.jimmy-energy.eu/
+    status: 200
+  - url: https://www.jimmy-energy.eu/openapi.json
+    status: 404
+  - url: https://www.jimmy-energy.eu/.well-known/agent-card.json
+    status: 404
+  - url: https://www.jimmy-energy.eu/llms.txt
+    status: 404
+  checked: '2026-08-17'
 common:
+- type: DomainSecurity
+  url: security/jimmy-domain-security.yml
 - type: Website
   url: https://www.jimmy-energy.eu/
+- type: LLMsTxt
+  name: Generated llms.txt for Jimmy
+  url: llms/jimmy-llms.txt
+- type: GitHubOrganization
+  name: Jimmy-Energy on GitHub (two forks of third-party Python utilities; no first-party code)
+  url: https://github.com/Jimmy-Energy
+- type: Blog
+  name: Actualités (company news)
+  url: https://www.jimmy-energy.eu/actualites
+- type: PrivacyPolicy
+  name: Données personnelles (GDPR) notice, published inside the mentions légales page
+  url: https://www.jimmy-energy.eu/mentions-legales
+- type: LinkedIn
+  url: https://www.linkedin.com/company/jimmy-energy/
+- type: X
+  url: https://twitter.com/Jimmy_Energy_
