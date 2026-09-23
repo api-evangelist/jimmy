@@ -2,38 +2,16 @@ generated: '2026-08-17'
 method: probed
 source: live HTTPS probes of the only host Jimmy publishes (www.jimmy-energy.eu)
 host: https://www.jimmy-energy.eu
-note: >-
-  Every /.well-known/ path probed returned HTTP 404. Jimmy publishes no discovery
-  surface at all: no security.txt, no OIDC/OAuth metadata, no API catalog, no
-  ai-plugin, and no A2A agent card at either the canonical or the legacy path.
-  This file records a measured ABSENCE — no WellKnown, SecurityTxt or AgentCard
-  pointer is emitted in apis.yml, because there is no document to point at.
-  Jimmy is a nuclear thermal-generator manufacturer (see x-coverage) with no
-  developer program; the marketing site runs on Webflow. There are no API
-  subdomains to probe — api., docs. and developer.jimmy-energy.eu do not resolve
-  in DNS (NXDOMAIN).
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/oauth-protected-resource
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
-- path: /.well-known/agent-card.json
-  status: 404
-- path: /.well-known/agent.json
-  status: 404
+note: 'Every /.well-known/ path probed returned HTTP 404. Jimmy publishes no discovery surface at all:
+  no security.txt, no OIDC/OAuth metadata, no API catalog, no ai-plugin, and no A2A agent card at either
+  the canonical or the legacy path. This file records a measured ABSENCE — no WellKnown, SecurityTxt or
+  AgentCard pointer is emitted in apis.yml, because there is no document to point at. Jimmy is a nuclear
+  thermal-generator manufacturer (see x-coverage) with no developer program; the marketing site runs on
+  Webflow. There are no API subdomains to probe — api., docs. and developer.jimmy-energy.eu do not resolve
+  in DNS (NXDOMAIN).'
 contract_discovery:
-  note: >-
-    STEP 0b contract discovery, run against every host Jimmy resolves. No REST
-    OpenAPI, no GraphQL surface, no MCP endpoint, no AsyncAPI. robots.txt is
-    served but empty (0 bytes) and there is no sitemap.xml.
+  note: STEP 0b contract discovery, run against every host Jimmy resolves. No REST OpenAPI, no GraphQL
+    surface, no MCP endpoint, no AsyncAPI. robots.txt is served but empty (0 bytes) and there is no sitemap.xml.
   probes:
   - url: https://www.jimmy-energy.eu/openapi.json
     status: 404
@@ -61,3 +39,27 @@ contract_discovery:
   - url: https://developer.jimmy-energy.eu/
     status: null
     note: DNS NXDOMAIN — host does not exist
+hosts:
+- host: https://www.jimmy-energy.eu
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
